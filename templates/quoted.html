@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+        <div>
+            A share of {{ session.quote.name }} ({{ session.quote.symbol }}) costs ${{ session.quote.price }}
+        </div>
+    </form>
+{% endblock %}

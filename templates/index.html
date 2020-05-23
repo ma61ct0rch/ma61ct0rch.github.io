@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+        <div>
+            <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Symbol</th>
+      <th scope="col">Name</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Price</th>
+      <th scope="col">TOTAL</th>
+    </tr>
+  </thead>
+  <tbody>
+        {% for row in session.transactions %}
+    <tr>
+      <td>{{ row['stock'] }}</td>
+      <td>{{ row['name'] }}</td>
+      <td>{{ "%.2f"|format(row['sum(qty)']) }}</td>
+      <td>{{ row['price'] }}</td>
+      <td>{{ row['total'] }}</td>
+    </tr>
+        {% endfor %}
+    <tr>
+      <td scope="col">CASH</td>
+      <td scope="col"></td>
+      <td scope="col"></td>
+      <td scope="col"></td>
+      <td scope="col">{{ session.cash }}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"><b>{{ session.patrimony }}</b></th>
+  </tfoot>
+</table>
+        </div>
+
+{% endblock %}
